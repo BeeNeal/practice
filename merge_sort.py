@@ -1,36 +1,36 @@
-def mergeSort(alist):
-    print("Splitting ",alist)
-    if len(alist)>1:
-        mid = len(alist)//2
-        lefthalf = alist[:mid]
-        righthalf = alist[mid:]
+def merge_sort(alist):
+    """ """
 
-        mergeSort(lefthalf)
-        mergeSort(righthalf)
+    if len(alist) > 1:
+        mid = len(alist) // 2
+        l_half = alist[:mid]
+        r_half = alist[mid:]
 
-        i=0
-        j=0
-        k=0
-        while i < len(lefthalf) and j < len(righthalf):
-            if lefthalf[i] < righthalf[j]:
-                alist[k]=lefthalf[i]
-                i=i+1
-            else:
-                alist[k]=righthalf[j]
-                j=j+1
-            k=k+1
+        merge_sort(l_half)
+        merge_sort(r_half)
 
-        while i < len(lefthalf):
-            alist[k]=lefthalf[i]
-            i=i+1
-            k=k+1
+    i = 0  # keeps track of l_half index
+    j = 0  # keeps track of r_half index
+    k = 0  # keeps track of sorted_list index
+    sorted_list = []
+    while i < len(l_half) and j < len(r_half):
+        if l_half[i] < r_half[j]:
+            sorted_list[k] = l_half[i]
+            i += 1
+        else:
+            sorted_list[k] = r_half[j]
+            j += 1
+        k += 1
 
-        while j < len(righthalf):
-            alist[k]=righthalf[j]
-            j=j+1
-            k=k+1
-    print("Merging ",alist)
+    while i < len(l_half):
+        sorted_list[k] = l_half[i]
+        i += 1
+        k += 1
 
-alist = [54,26,93,17,77,31,44,55,20]
-mergeSort(alist)
-print(alist)
+    while j < len(r_half):
+        sorted_list[k] = r_half[j]
+        i += 1
+        k += 1
+
+alist = [50, 22, 89, 17, 76, 33, 44, 55, 21]
+merge_sort(alist)
