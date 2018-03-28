@@ -3,9 +3,10 @@ def word_score(phrase):
 
     >>> print word_score('abc zab i')
     zab
-    >>> print word_score('abc abbaa za')
-    za
-
+    >>> print word_score('abc abbaa za zing')
+    zing
+    >>> print word_score('a b c z')
+    z
     """
 
     high_score = 0
@@ -14,22 +15,21 @@ def word_score(phrase):
 
     index = 0
     for i in range(len(phrase)):
-        if phrase[i] != ' ' and i != len(phrase):
-            current += ord(phrase[i]) - 96
-        elif phrase[i] == ' ':
-            if current > high_score:
-                high_word = phrase[index: i]
-                high_score = current
-            index = i + 1
-            current = 0
-        elif i == len(phrase):
-            print i, current, high_word
+        if i == len(phrase) - 1:
             current += ord(phrase[i]) - 96
             if current > high_score:
                 high_word = phrase[index: i + 1]
                 high_score = current
             index = i + 1
             current = 0
+        elif phrase[i] == ' ':
+            if current > high_score:
+                high_word = phrase[index: i]
+                high_score = current
+            index = i + 1
+            current = 0
+        elif phrase[i] != ' ' and i != len(phrase):
+            current += ord(phrase[i]) - 96
 
     return high_word
 
