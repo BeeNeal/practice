@@ -30,6 +30,18 @@ def zero_matrix(matrix):
     #             zero_position.append(i)
     #             row.append(position)
 
+    # while zero_position:
+    #     # converts whole row that contains 0 to 0
+    #     row_pos = row.pop()
+    #     matrix[row_pos] = [0] * len(matrix[row_pos])
+
+    #     # then finds other rows' zeroes and converts them
+    #     pos = zero_position.pop()
+    #     for item in matrix:
+    #         item[pos] = 0
+
+
+    # working solution above, WIP solution below
     # flatten out list            
     matrix = sum(matrix, [])
     posi = set()
@@ -41,20 +53,10 @@ def zero_matrix(matrix):
     while posi:
         p = posi.pop()
         pos_count = p
-        for _ in range(len(matrix) - r_length):
+        for _ in range(len(matrix) - r_length -2):
             matrix[pos_count + r_length] = 0
             pos_count += r_length
 
-
-    # while zero_position:
-    #     # converts whole row that contains 0 to 0
-    #     row_pos = row.pop()
-    #     matrix[row_pos] = [0] * len(matrix[row_pos])
-
-    #     # then finds other rows' zeroes and converts them
-    #     pos = zero_position.pop()
-    #     for item in matrix:
-    #         item[pos] = 0
 
     return matrix
 
