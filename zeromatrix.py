@@ -20,24 +20,41 @@ Make sure it works with non-square matrices:
 def zero_matrix(matrix):
     """Given an NxM matrix, for cells=0, set their row and column to zeroes."""
 
+    r_length = len(matrix[0])
     zero_position = []
     row = []
 
-    for position, item in list(enumerate(matrix)):
-        for i in range(len(item) - 1):
-            if item[i] == 0:
-                zero_position.append(i)
-                row.append(position)
+    # for position, item in list(enumerate(matrix)):
+    #     for i in range(len(item) - 1):
+    #         if item[i] == 0:
+    #             zero_position.append(i)
+    #             row.append(position)
 
-    while zero_position:
-        # converts whole row that contains 0 to 0
-        row_pos = row.pop()
-        matrix[row_pos] = [0] * len(matrix[row_pos])
+    # flatten out list            
+    matrix = sum(matrix, [])
+    posi = set()
 
-        # then finds other rows' zeroes and converts them
-        pos = zero_position.pop()
-        for item in matrix:
-            item[pos] = 0
+    for i in range(len(matrix) -1):
+        if matrix[i] == 0:
+            posi.add(i)
+
+    while posi:
+        p = posi.pop()
+        pos_count = p
+        for _ in range(len(matrix) - r_length):
+            matrix[pos_count + r_length] = 0
+            pos_count += r_length
+
+
+    # while zero_position:
+    #     # converts whole row that contains 0 to 0
+    #     row_pos = row.pop()
+    #     matrix[row_pos] = [0] * len(matrix[row_pos])
+
+    #     # then finds other rows' zeroes and converts them
+    #     pos = zero_position.pop()
+    #     for item in matrix:
+    #         item[pos] = 0
 
     return matrix
 
