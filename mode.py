@@ -5,12 +5,12 @@ Return the set of nums that are the mode::
     >>> find_mode([1]) == set([1])
     True
 
-    >>> find_mode([1, 2, 2, 2]) == set([2])
+    >>> find_mode([1, 2, 2, 2]) == {2}
     True
 
 If there is a tie, return all::
 
-    >>> find_mode([1, 1, 2, 2]) == set([1, 2])
+    >>> find_mode([1, 1, 2, 2]) == {1, 2}
     True
 
     >>> find_mode([1, 1, 2, 2])
@@ -25,7 +25,7 @@ def find_mode(nums):
     counts = {}
     for num in nums:
         counts[num] = counts.get(num, 0) + 1
-    highest_count = sorted(counts.values())[0]
+    highest_count = sorted(counts.values())[-1]
 
 # want to find the highest count, can do that by sorting counts.values(), then
 # iterate through keys and any with that value get added to mode set
