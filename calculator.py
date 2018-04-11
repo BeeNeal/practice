@@ -28,7 +28,7 @@ def calc(s):
 
     separated_exp = s.split(" ")
     r = len(separated_exp)
-    separated_exp.reverse()
+    # separated_exp.reverse()
     print separated_exp
     current_exp = []
     operators = (['*', '/', '-', '+'])

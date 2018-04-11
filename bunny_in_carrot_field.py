@@ -34,5 +34,8 @@ def place_bunny_in_center():
     else:
         center_x = n/2
 
-    center_y = n/2
+    if m % 2 == 0:
+        pass
+    else:
+        center_y = m/2
 find_num_carrots(4, 5)
