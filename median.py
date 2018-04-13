@@ -73,3 +73,53 @@ def merge_two_sorted_lists(listA, listB):
         count += 1
 
 
+a = [1,3,3,6,7]
+b = [2,5,8,8,9,9]
+c = [2,3,4,5,6,7]
+d = []
+
+def median(listA, listB):
+    i = 0
+    j = 0
+    count = 0
+
+    combined_len = len(listA) + len(listB)
+    if combined_len % 2 != 0:
+        while i + j < combined_len / 2 + 1:
+            if listA[i] <= listB[j]:
+                median = listA[i]
+                i = i + 1
+                print median
+            else:
+                median = listB[j]
+                j = j + 1
+                print median
+            count += 1
+    return median
+    # if i > j:
+    #     return listA[i]
+    # else:
+    #     return listB[j]
+    else:
+        while i + j < combined_len / 2:
+            if listA[i] <= listB[j]:
+                median = listA[i]
+                i = i + 1
+            else:
+                median = listB[j]
+                j = j + 1
+        if i == j:
+            median = listA[i] + listB[j] / 2.0
+        elif i > j:
+            if i - 1 > j:
+                median = listA[i] + listA[i - 1] / 2.0
+            else:
+                pass
+
+i = 3
+j = 1
+[1, 2, 3]
+[2 3 4]
+[ 1 2 2 3 3 4]
+
+    return median
