@@ -31,13 +31,17 @@ class LinkedList:
 
     def size(self):
         length = 0
-        while self.next:
+        current = self.head
+        while current.next:
             length += 1
-            
+            self.
+
 
         return length
 
     def add(self, item):
         new_node = Node(item)
-        self.next = self.head
+        self.next = setNext(new_node)
         self.head = self.new_node
+
+    def remove(self, item)
