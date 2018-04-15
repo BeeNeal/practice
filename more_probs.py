@@ -28,5 +28,26 @@ def print_recursively(n):
 # 4) Given a list of integers, return the unique integer in that list (no tricks,
  # there can only be one unique integer)
 
+def find_unique_int(lst):
+    """Given a list of integers, return the unique integer in that list"""
+
+    nums = {}
+    nums[num] = 
+
 # 5) You have two sets. Find out if one of the sets is a subset of the other. Return  
 # True/False. No sorting, no using built-in functions.  
+    seta = [1, 2, 3]
+    setb = [9, 8, 5, 3, 2, 1]
+
+def is_set_subset(seta, setb):
+    """Return boolean for if one of the input sets is a subset of the other."""
+
+#FIXME
+    if seta > setb or seta < setb:
+        return True
+    return False
+
+
+    # alt solution:
+
+all(item in seta for item in setb)
