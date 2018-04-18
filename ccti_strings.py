@@ -43,36 +43,39 @@ def one_away(string, string2):
 
 
 def string_compression(string):
-    """Take in string, return character, and number of that character
+    """
+    Take in string, return character, and number of that character
+
     >>> string_compression('aaabbbbbddccc')
     'a3b5d2c3'
     >>> string_compression('abc')
     'abc'
     >>> string_compression('')
     ''
+    >>> string_compression('abcca')
+    'abc2a'
     >>> string_compression('1122311')
     '1222312'
 
     """
-    # takes care of already compressed strings and empty strings
-    if len(string) == len(set(string)):
-        return string
+    char_count = 1
+    compressed = ''
 
-    index = 0
-    compressed_string = ''
-    for i in range(len(string)):
-        # when hit end of the string, won't hit a dif char, so manually slice at end
-        if all(c == string[-1] for c in string[index:]):
-            char = string[index:]
-            compressed_string += string[-1] + str(len(char))
-            break
-        elif string[i] != string[index]:
-            char = string[index:i]
-            # here see if we can do inplace - always know the compressed string 
-            #will be 2 char more if compression
-            compressed_string += string[i - 1] + str(len(char))
-            index = i
-    return compressed_string
+    if len(string) == 0:
+        return ''
+
+    for i in range(1, len(string)):
+        if string[i - 1] == string[i]:
+            char_count += 1
+        else:
+            compressed += string[i - 1]
+            if char_count > 1:
+                compressed += str(char_count)
+            char_count = 1
+    compressed += string[i]
+    if char_count > 1:
+        compressed += str(char_count)
+    return compressed
 
 
 def rotate_matrix(matrix):
