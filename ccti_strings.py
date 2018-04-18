@@ -37,9 +37,23 @@ def is_palindrome_permutation(string, string2):
     pass
 
 
-def one_away(string, string2):
-    """ """
-    pass
+def is_one_edit_away(string, string2):
+    """Return bool for if s1 is permutation of s2 with 0-1 edit
+
+    >>> is_one_edit_away('yahoo', 'yehoo')
+    True
+    >>> is_one_edit_away('yahoo', 'yahoo')
+    True
+    >>> is_one_edit_away('yahoo', 'porridge')
+    False
+    >>> is_one_edit_away('zoom', 'boon')
+    False
+    """
+    if len((set(string)) - set(string2)) > 1:
+        return False
+    return True
+    
+
 
 
 def string_compression(string):
