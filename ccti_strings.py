@@ -95,14 +95,17 @@ def string_compression(string):
 
 def rotate_matrix(matrix):
     """
+    Take in n x n matrix and return matrix with items rotated 90 degrees
 
     >>> rotate_matrix([[1, 2], [3, 4]])
-    [[3, 4], [1, 2]]
+    [[3, 1], [4, 2]]
+    >>> rotate_matrix([[1, 2], [3, 4]])
+    [[3, 1], [4, 2]]
     """
     matrix.reverse()
-    print matrix
-    return zip(*matrix)
-
+    rotated = zip(*matrix)
+    rotated_matrix = [list(tup) for tup in rotated]
+    return rotated_matrix
 
 def zero_matrix():
     """ """
