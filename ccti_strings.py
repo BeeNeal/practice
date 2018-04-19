@@ -48,12 +48,13 @@ def is_one_edit_away(string, string2):
     False
     >>> is_one_edit_away('zoom', 'boon')
     False
+    >>> is_one_edit_away('chile', 'chil')
+    True
     """
+
     if len((set(string)) - set(string2)) > 1:
         return False
     return True
-    
-
 
 
 def string_compression(string):
@@ -93,8 +94,14 @@ def string_compression(string):
 
 
 def rotate_matrix(matrix):
-    """ """
-    pass
+    """
+
+    >>> rotate_matrix([[1, 2], [3, 4]])
+    [[3, 4], [1, 2]]
+    """
+    matrix.reverse()
+    print matrix
+    return zip(*matrix)
 
 
 def zero_matrix():
