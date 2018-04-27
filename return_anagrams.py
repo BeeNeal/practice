@@ -22,7 +22,6 @@ def return_all_anagrams(lst):
     return list(all_anagrams)
 
 
-
 def return_all_anagrams_2(lst):
     """
     >>> sorted(return_all_anagrams_2(['cat', 'eat', 'dare', 'bash', 'tea', 'dear', 'read']))
@@ -31,12 +30,34 @@ def return_all_anagrams_2(lst):
     all_anagrams = set()
     for i in range(len(lst)):
         for j in range(i + 1, len(lst)):
+            print lst[i], lst[j]
             if len(set(lst[i]) - set(lst[j])) == 0:
                 all_anagrams.add(lst[i])
                 all_anagrams.add(lst[j])
     return list(all_anagrams)
 
-# problem - need one item in lst to compare to all rest of list items **
+# These loops/combo compare 1 item (at a time) in list to all rest of list items **
+ #    cat eat
+ #    cat dare
+ #    cat bash
+ #    cat tea
+ #    cat dear
+ #    cat read
+ #    eat dare
+ #    eat bash
+ #    eat tea
+ #    eat dear
+ #    eat read
+ #    dare bash
+ #    dare tea
+ #    dare dear
+ #    dare read
+ #    bash tea
+ #    bash dear
+ #    bash read
+ #    tea dear
+ #    tea read
+ #    dear read
 
 if __name__ == "__main__":
     import doctest
