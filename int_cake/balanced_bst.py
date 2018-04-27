@@ -44,6 +44,19 @@ class BinarySearchTree(object):
             else:
                 self.insert_node(current_node.right, data)
 
+    def find_node(self, data):
+        """Searches BST and returns True if data is found."""
+
+        self.current = self.root
+        if self.current is None:
+            return False
+        elif self.current == data:
+            return True
+        else:
+            if data < self.current.data:
+                self.current = self.current.left
+            elif data > self.current.data:
+                self.current = self.current.right
 
 def id_bst_balanced(bst):
     """Returns t/f based on if BST is balanced."""
@@ -60,3 +73,5 @@ if __name__ == '__main__':
     bst.insert(5)
     bst.insert(2)
     bst.insert(6)
+    print "searching for 3"
+    print bst.find_node(3)
