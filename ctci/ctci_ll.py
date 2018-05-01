@@ -51,6 +51,12 @@ class LinkedList(object):
                 current.next = None
 
     def print_all_nodes(self):
+        """
+        >>> ll.print_all_nodes()
+        a
+        b
+        c
+        """
 
         current = self.head
         while current:
@@ -58,6 +64,12 @@ class LinkedList(object):
             current = current.next
 
     def find_node(self, data):
+        """
+        >>> ll.find_node('b')
+        True
+        >>> ll.find_node('z')
+        False
+        """
 
         current = self.head
         while current:
@@ -80,19 +92,61 @@ class LinkedList(object):
             ind += 1
 
 
-def remove_duplicates(linked_lst):
+def remove_duplicates(head_node):
     """Given an unsorted linked list, remove the duplicates"""
-    pass
-
+    
     # iterate through list, add each node to a set, if node is present in set, 
     # remove
+
+    seen = set()
+    current = head_node
+    while current.next:
+        if current in seen:
+            current.next = current.next.next
+
+
     
 
-# if "name" == "__main__":
+def output_cycle_node(head_node):
+    """Given a circular linked list, return the node that makes it circular
 
-ll = LinkedList()
-ll.append_node('a')
-ll.append_node('b')
-ll.append_node('c')
-ll.print_all_nodes()
-ll.find_node('b')
+    >>> circular_ll = LinkedList()
+    >>> a = Node('a')
+    >>> b = Node('b')
+    >>> c = Node('c')
+    >>> d = Node('d')
+    >>> a.next = b
+    >>> b.next = c
+    >>> c.next = d
+    >>> d.next = b
+
+    >>> circular_ll.head = a
+    >>> print output_cycle_node(circular_ll.head)
+    d
+
+    """
+
+    slow = head_node
+    fast = head_node
+
+    while fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+        if slow == fast:
+            return slow.data
+
+
+if __name__ == "__main__":
+    import doctest
+
+    ll = LinkedList()
+    ll.append_node('a')
+    ll.append_node('b')
+    ll.append_node('c')
+
+    if doctest.testmod().failed == 0:
+        print "Linked List champion, tests passed!"
+
+
+
