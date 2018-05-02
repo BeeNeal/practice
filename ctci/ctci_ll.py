@@ -30,12 +30,37 @@ class LinkedList(object):
         # else:
         #     current_head.next = new_node
 
+    def append_multiple_nodes(self, *nodes):
+        """
+        >>> big_ll = LinkedList()
+        >>> big_ll.append_multiple_nodes('z', 'y', 'x')
+        >>> big_ll.print_all_nodes()
+        z
+        y
+        x
+        """
+
+        for item in nodes:
+            self.append_node(item)
+
     def remove_node(self, data):
+        """
+        >>> ll = LinkedList()
+        >>> ll.append_node('a')
+        >>> ll.append_node('b')
+        >>> ll.append_node('c')
+        >>> ll.remove_node('a')
+        >>> ll.print_all_nodes()
+        b
+        c
+
+        """
 
         current = self.head
 
         # check head first so head pointer doesn't get lost
         if current.next and current.data == data:
+            self.head = current.next
             current = current.next
             if current is None:
                 self.tail = None
@@ -104,6 +129,23 @@ def remove_duplicates(head_node):
         if current in seen:
             current.next = current.next.next
 
+
+def sum_lists(ll1, ll2):
+    """
+    Given 2 LLs representing reverse ordered nums, return the sum of the 2 nums
+
+    >>> ll1 = LinkedList()
+    >>> ll1.append_node('7')
+    >>> ll1.append_node('1')
+    >>> ll1.append_node('6')
+    >>> ll2 = LinkedList()
+    >>> ll2.append_node('5')
+    >>> ll2.append_node('9')
+    >>> ll2.append_node('2')
+    >>> sum_lists(ll1, ll2)
+    912
+
+    """
 
     
 
