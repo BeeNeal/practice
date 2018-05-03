@@ -135,18 +135,52 @@ def sum_lists(ll1, ll2):
     Given 2 LLs representing reverse ordered nums, return the sum of the 2 nums
 
     >>> ll1 = LinkedList()
-    >>> ll1.append_node('7')
-    >>> ll1.append_node('1')
-    >>> ll1.append_node('6')
+    >>> ll1.append_node(7)
+    >>> ll1.append_node(1)
+    >>> ll1.append_node(6)
     >>> ll2 = LinkedList()
-    >>> ll2.append_node('5')
-    >>> ll2.append_node('9')
-    >>> ll2.append_node('2')
+    >>> ll2.append_node(5)
+    >>> ll2.append_node(9)
+    >>> ll2.append_node(2)
     >>> sum_lists(ll1, ll2)
     912
 
     """
 
+    return list_to_int(ll1) + list_to_int(ll2)
+
+def list_to_int(lst):
+    """
+    >>> list_to_int([1, 2, 3])
+    123
+    """
+
+    separated_num = ll_to_list(lst)
+    separated_num.reverse()
+    s_nums = ''.join(map(str, separated_num))
+    return int(s_nums)
+
+
+def ll_to_list(ll):
+    """Take in LL, return list
+
+    >>> ll1 = LinkedList()
+    >>> ll1.append_node(7)
+    >>> ll1.append_node(1)
+    >>> ll1.append_node(6)
+    >>> ll_to_list(ll1)
+    [7, 1, 6]
+
+    """
+
+    ll_contents = []
+
+    current = ll.head
+    while current:
+        ll_contents.append(current.data)
+        current = current.next
+
+    return ll_contents
     
 
 def output_cycle_node(head_node):
