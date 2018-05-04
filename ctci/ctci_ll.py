@@ -147,17 +147,19 @@ def sum_lists(ll1, ll2):
 
     """
 
-    return list_to_int(ll1) + list_to_int(ll2)
+    return list_to_int((ll_to_list(ll1))) + list_to_int((ll_to_list(ll2)))
+
+# Need to take 2 LLs -> convert LLs to Lists -> converts lists to single ints
+
 
 def list_to_int(lst):
     """
+    Take in list of ints, return ints joined into 1 int in reverse order
     >>> list_to_int([1, 2, 3])
-    123
+    321
     """
-
-    separated_num = ll_to_list(lst)
-    separated_num.reverse()
-    s_nums = ''.join(map(str, separated_num))
+    lst.reverse()
+    s_nums = ''.join(map(str, lst))
     return int(s_nums)
 
 
