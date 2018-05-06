@@ -215,6 +215,37 @@ def output_cycle_node(head_node):
             return slow.data
 
 
+def is_palindrome(head):
+    """Returns true if LL is palindrome.
+    >>> pal_ll = LinkedList()
+    >>> pal_ll.append_multiple_nodes('r', 'a', 'd', 'a', 'r')
+    >>> is_palindrome(pal_ll.head)
+    True
+    >>> not_pal_ll = LinkedList()
+    >>> not_pal_ll.append_multiple_nodes('r', 'a', 'd', 'a')
+    >>> is_palindrome(not_pal_ll.head)
+    False
+    """
+
+    # if doubly linked list, check if head.next and tail.prev always match
+
+    # use a stack! FIFO
+    char_stack = []
+    current_char = head
+    while current_char:
+        char_stack.append(current_char.data)
+        current_char = current_char.next
+
+    current_char = head
+    while current_char:
+        if char_stack.pop() == current_char.data:
+            current_char = current_char.next
+            continue
+        else:
+            return False
+    return True
+
+
 if __name__ == "__main__":
     import doctest
 
