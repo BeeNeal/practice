@@ -12,6 +12,20 @@ class LinkedList(object):
         self.head = None
         self.tail = None
 
+    def add_nodes_without_data(self, *nodes):
+        """ """
+
+        if self.head is None:
+            self.head = nodes[0]
+        if self.tail:
+            self.tail.next = nodes[0]
+
+        #FIXME
+        for node in nodes[1:]:
+            self.head
+        
+        self.tail = nodes[-1]
+
     def append_node(self, data):
         """add node to end of LL"""
 
@@ -244,6 +258,45 @@ def is_palindrome(head):
         else:
             return False
     return True
+
+def intersection_node(head1, head2):
+    """Return a node common to 2 linked lists
+
+    >>> a = Node('a')
+    >>> b = Node('b')
+    >>> c = Node('c')
+    >>> d = Node('d')
+    >>> a.next = b
+    >>> b.next = c
+    >>> c.next = d
+    >>> ll = LinkedList()
+    >>> ll2 = LinkedList()
+    >>> intersection_node(ll.head, ll2.head).data
+    'a'
+    >>> intersection_node(ll.head, ll2.head)
+    'no intersecting nodes'
+
+    """
+
+    intersection = ll_to_set(head1) & ll_to_set(head2)
+    if intersection:
+        return intersection
+    else:
+        return "no intersecting nodes"
+
+    # another way could do this with less memory space is to go through one LL
+    # and use find.node on all of its nodes on second LL
+
+
+def ll_to_set(head):
+    """convert linked list to set"""
+
+    ll_set = set()
+    current = head
+    while current:
+        ll_set.add(current)
+        current = current.next
+    return ll_set
 
 
 if __name__ == "__main__":
