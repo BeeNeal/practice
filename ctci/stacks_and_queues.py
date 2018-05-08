@@ -1,5 +1,5 @@
 
-class Stack:
+class Stack(object):
     def __init__(self):
         self.items = []
 
@@ -18,4 +18,29 @@ class Stack:
     def size(self):
         return len(self.items)
 
+
+def rev_string(mystr):
+    """Takes in string, reverses characters using a stack
+
+    >>> rev_string('abc')
+    'cba'
+
+    """
+
+    stack_for_str = Stack()
+    for char in mystr:
+        stack_for_str.push(char)
+    rev_string = ''
+    while not stack_for_str.is_empty():
+        rev_string += stack_for_str.pop()
+
+    return rev_string
+
+
 # use a single array to implement 3 stacks
+
+
+if __name__ == "__main__":
+    import doctest
+    if doctest.testmod().failed == 0:
+        print "yahooz stacks and queues!"
