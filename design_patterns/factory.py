@@ -28,10 +28,10 @@ def get_pet(pet="dog"):
 d = get_pet('dog')
 c = get_pet('cat')
 
-print d.speak()
-print c.speak()
-
-
 # Encapulates object creation
 # Useful when have uncertainties in types of objects
 
+if __name__ == "__main__":
+
+    print d.speak()
+    print c.speak()
