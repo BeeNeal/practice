@@ -22,5 +22,4 @@ def flipped_dict(dict_of_lists):
 
 # O(n^2) runtime
 
-
 print flipped_dict({'a':[1, 2], 'b':[2, 3], 'c': [2], 'd':[]})

@@ -18,6 +18,9 @@ class Stack(object):
     def size(self):
         return len(self.items)
 
+    def minimum(self):
+        
+
 
 def rev_string(mystr):
     """Takes in string, reverses characters using a stack
