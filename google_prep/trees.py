@@ -18,3 +18,11 @@ class Node(object):
 
     def __repr__(self):
         return "<Node %s l=%s r=%s>" % (self.data, self.left, self.right)
+
+class Tree(object):
+
+    def __init__(self, root):
+        """Root should be a root node"""
+        
+        self.root = root
+
