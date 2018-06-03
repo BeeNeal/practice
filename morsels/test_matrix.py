@@ -12,22 +12,22 @@ class MatrixFromStringTests(unittest.TestCase):
         self.assertEqual(matrix_from_string(""), [])
 
     def test_single_item(self):
-        self.assertEqual(matrix_from_string("-5"), [[-5]])
+        self.assertEqual(matrix_from_string("-5"), [[-5.0]])
 
     def test_floating_point_numbers(self):
         self.assertEqual(matrix_from_string("8.5\n7.6"), [[8.5], [7.6]])
 
     def test_two_by_two_matrix(self):
         matrix = matrix_from_string("1 2\n10 20")
-        self.assertEqual([[1, 2], [10, 20]], matrix)
+        self.assertEqual([[1.0, 2.0], [10.0, 20.0]], matrix)
 
     def test_three_by_two_matrix(self):
         matrix = matrix_from_string("9 8 7\n19 18 17")
-        self.assertEqual([[9, 8, 7], [19, 18, 17]], matrix)
+        self.assertEqual([[9.0, 8.0, 7.0], [19.0, 18.0, 17.0]], matrix)
 
     def test_extra_newline(self):
         matrix = matrix_from_string("9 8 7\n19 18 17\n")
-        self.assertEqual([[9, 8, 7], [19, 18, 17]], matrix)
+        self.assertEqual([[9.0, 8.0, 7.0], [19.0, 18.0, 17.0]], matrix)
 
     # To test the Bonus part of this exercise, comment out the following line
     @unittest.expectedFailure
