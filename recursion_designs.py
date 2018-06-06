@@ -27,10 +27,8 @@ def factorial(n):
     720
     """
 
-    # base case
     if n <= 1:
         return 1
-
     else:
         return n * factorial(n - 1)
 
@@ -42,6 +40,17 @@ def factorial(n):
 #         num *= i
 #     return num
 
+def reverse_string(string):
+    """ reverse string recursively
+    >>> reverse_string('hello')
+    'olleh'
+
+    """
+
+    if len(string) < 2:
+        return string
+    else:
+        return string[-1] + reverse_string(string[:-1])
 
 if __name__ == '__main__':
     import doctest
