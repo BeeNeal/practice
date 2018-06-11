@@ -17,38 +17,39 @@
     # all vertices these vertices are adjacent to are stored in dictionary
 
 # graph = {'v0':['v1', 'v2'], 'v1', 'v2', 'v3', 'v4'}
+class Vertex(object):
+    """vertex object for use in graphs"""
+
+    def __init__(self, data, adj={}):
+        self.data = data
+        self.adj = adj
 
 class Graph(object):
     """graph object"""
 
-    def __init__(self, vertices):
-        if vertices:
-            self.vertices = vertices
-        else:
-            self.vertices = []
+    def __init__(self, vertices=[]):
+        """Vertices must be vertex objects"""
+
+        self.vertices = vertices
 
     def add_vertex(self, vert):
         """adds an instance of Vertex to the graph"""
 
-        self.vertices.append(vert)
+        self.vertices.append(Vertex(vert))
 
     def add_edge(self, from_vert, to_vert, weight):
         """adds an edge to a vertex, and includes the weight"""
 
-        # add to adj key in dict at the vert variable's 
-        # need to update the var without overwriting
-        # instead of variables, they should probably be objects
-        # OR - how to update 
-
-        # if from_vert in self.vertices:
-        #     self.vertices['{vert}'.format(vert=from_vert)]
-        # self.vertices.append({'id':})
+        for v in self.vertices:
+            if v.data == from_vert:
+                v.adj.append({to_vert: weight})
+            else:
+                self.vertices.append(Vertex(from_vert, {to_vert: weight}))
 
     def get_vertices(self):
         """returns all vertices in graph"""
 
         return self.vertices
-
 
 # adj determined by direction
 v0 = {'id': 'v0', 'adj': {'v1': 5, 'v5': 2}}
@@ -58,7 +59,19 @@ v3 = {'id': 'v3', 'adj': {'v4': 7, 'v5': 3}}
 v4 = {'id': 'v4', 'adj': {'v0': 1}}
 v5 = {'id': 'v5', 'adj': {'v2': 1, 'v4': 8}}
 
-my_graph = Graph([v0, v1, v2, v3, v4])
+# my_graph = Graph([v0, v1, v2, v3, v4])
+
+my_graph = Graph([Vertex('v0'), Vertex('v1')])
+my_graph.add_edge('v0', 'v1', 5)
+
+# here's where I'm getting confused about OO - if I don't have a variable pointing
+# to the object, how can I access it? It would be better to add the vertex obj
+#  not a representation of it/its edges
+
+
+for i in my_graph.vertices:
+    print i.adj
+
 
 # v0 = {'id': 'v0', 'adj': {'v1':5, 'v5':2}}
 # v1 = {'id': 'v1', 'adj': {'v2':4}}
@@ -70,5 +83,6 @@ my_graph = Graph([v0, v1, v2, v3, v4])
 # for v in my_graph.vertices:
 #     print v['id'], v['adj']
 
-print my_graph.get_vertices
-print my_graph.vertices.values()
+
+# Does the vertex or the graph store the adj vertices/weights? I want it to be 
+# the graph, but can only neatly attach to vertices
