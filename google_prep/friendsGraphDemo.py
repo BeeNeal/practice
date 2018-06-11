@@ -90,7 +90,7 @@ class FriendGraph(object):
         """
 
         if name not in self.nodes:
-            # Making sure not already present, or else would overwrite friends
+            # Ensure not already there, or else will overwrite node's friends
             self.nodes[name] = PersonNode(name)
 
     def set_friends(self, name, friend_names):
@@ -123,7 +123,34 @@ class FriendGraph(object):
             friend.adjacent.add(person)
 
     def are_connected(self, name1, name2):
-        """Is this name1 friends with name2?"""
+        """Is this name1 friends with name2?
+
+        >>> f = FriendGraph()
+        >>> f.add_person("Romeo")
+        >>> f.add_person("Juliet")
+        >>> f.set_friends("Romeo", ["Juliet"])
+        >>> f.are_connected("Romeo", "Juliet")
+        True
+
+        """
+
+        # want to do a BFS here
+
+        checked_friends = Queue()
+        to_check = enqueue(name1)
+        seen = set()
+        seen.add(self.nodes[name1])
+
+        while not to_check is_empty():
+            current = to_check.dequeue()
+
+            if current == name2:
+                return True
+            else:
+                checked_friends.append(self.name2.friends)
+
+
+# friends are keys in nodes dict, search for name in set
 
 
 if __name__ == '__main__':
