@@ -1,3 +1,5 @@
+from collections import Queue, dequeue
+
 """Find whether two people in an undirected graph are friends.
 
 Let's create a graph and add a bunch of people:
@@ -137,7 +139,7 @@ class FriendGraph(object):
         # want to do a BFS here
 
         checked_friends = Queue()
-        to_check = enqueue(name1)
+        to_check = enqueue(self.nodes[name1])
         seen = set()
         seen.add(self.nodes[name1])
 
