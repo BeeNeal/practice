@@ -12,7 +12,7 @@ class HashTable(object):
     def put(self, key, data):
 
         hash_value = self.hash_function(key, len(self.slots))
-        if self.slots[hash_value] == None:
+        if self.slots[hash_value] is None:
             self.slots[hash_value] = key
             self.data[hash_value] = data
         else:
@@ -24,6 +24,12 @@ class HashTable(object):
                 while self.next_slot is not None and self.next_slot != key:
                     next_slot = self.rehash(hash_value, len(self.slots))
                     times_reslot += 1
+
+            if self.slots[next_slot] is None:
+                self.slots[next_slot] = key
+                self.data[next_slot] = data
+            else:
+                self.data[next_slot] = data
 
     def hash_function(self, key, size):
         """In this case we assume our keys will be integers"""
