@@ -88,3 +88,24 @@ def quick_selection(x, first, last):
         # the nonsorted part of the list)
         if minIndex != i:
             x[i], x[minIndex] = x[minIndex], x[i]
+
+
+
+def quick_selection(A, first, last):
+    """O(n^2), useful for datasets less than 10,000"""
+
+    # set our first loop, setting the min index as first item's index 
+    # (b/c that's all we've seen so far)
+    for i in range(first, last):
+        min_index = i
+
+        # set second loop, go through list to find smallest num
+        for j in range(first + 1, last + 1):
+            if A[j] < A[min_index]:
+                min_index = j
+
+        # After the second loop, as long as we aren't swapping same thing in place,
+        # swap index of smallest num with index of i (i will be the first item in 
+        # the nonsorted part of the list)
+        if min_index != i:
+            A[i], A[min_index] = A[min_index], A[i]

@@ -12,6 +12,7 @@ def quick_sort2(A, low, high):
     # can improve performance by setting an item threshold, and if less than
     # the threshold, use selection sort
 
+
     if low < high:  # if more than one item in list to be sorted, call partition
         p = partition(A, low, high)
         # call recursive QS on all nums left of pivot
@@ -39,14 +40,16 @@ def partition(A, low, high):
         # (which is in low position)
         A[low], A[border] = A[border], A[low] 
 
+    return 
+
 
 def get_pivot(A, low, high):
     """Returns index of the median of low, high, and mid positions.""" 
 
     mid = (low + high) / 2   # would use floor div '//' if in py3
-    pivot = high
+    pivot_index = high
     if A[low] > A[high]:
-        pivot = mid
+        pivot_index = mid
     elif A[low] < A[high]:
-        pivot = low
-    return pivot
+        pivot_index = low
+    return pivot_index
