@@ -42,6 +42,7 @@ import re
 def sum_nums(s):
 
     total = 0
+    # filter creates a list of elements for which a function returns true
     nums = filter(None, re.split(r'(\d+)', s))
     for item in nums:
         if item.isdigit():
