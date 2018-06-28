@@ -96,3 +96,10 @@ def is_bst(root):
             nodes_stack.append((node.right, node.value, upper))
 
     return True
+
+
+def is_bst(root):
+
+    nodes_stack = [root, float('-inf'), float('inf')]
+
+    
