@@ -20,3 +20,8 @@ G={'a':['b','c'], 'c':['d']}
 
 for node1, node2 in IT.combinations(list('abcd'), 2):
     print('{} -> {}: {}'.format(node1, node2, find_shortest_path(G, node1, node2)))
+
+
+def find_longest_path(graph, start, path=[]):
+    current_longest_path = 0
+    path = path + [start]
