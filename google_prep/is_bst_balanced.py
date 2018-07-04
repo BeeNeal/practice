@@ -98,8 +98,4 @@ def is_bst(root):
     return True
 
 
-def is_bst(root):
 
-    nodes_stack = [root, float('-inf'), float('inf')]
-
-    
