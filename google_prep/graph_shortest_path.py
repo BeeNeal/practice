@@ -26,17 +26,19 @@ graphsical = {'a': {'b': 2, 'c': 3},
               }
 
 
-def find_longest_path(graph, start, path=[]):
-    current_longest_path = 0
-    current_path_score = 0
+def find_longest_path(graph, start, path=[], longest_path=0,
+                      current_path_score=0):
+
     path = path + [start]  # must put start as list, so can concat
 
     if start not in graph:
         return None
     else:
-        print 'yay'
-    # for node in path:
-    #     if path
+
+    if current_path_score > longest_path:
+        longest_path = current_path_score
+    else: 
+        find_longest_path(graph, current_path_score
 
 print find_longest_path(graphsical, 'a')
 
