@@ -34,11 +34,11 @@ def find_longest_path(graph, start, path=[], longest_path=0,
     if start not in graph:
         return None
     else:
-
-    if current_path_score > longest_path:
-        longest_path = current_path_score
-    else: 
-        find_longest_path(graph, current_path_score
+        if current_path_score > longest_path:
+            longest_path = current_path_score
+        else:
+            find_longest_path(graph, path[0], path[1:], longest_path,
+                              current_path_score)
 
 print find_longest_path(graphsical, 'a')
 
